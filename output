@@ -1,0 +1,389 @@
+%sql
+-- Query all records from the category dimension table
+select * from dim_category_sahil
+
+%sql
+-- Query all records from the date dimension table
+SELECT * FROM dim_date_sahil
+
+
+%sql
+-- Show detailed metadata and properties for the product dimension table
+DESCRIBE DETAIL dim_product_sahil;
+
+format	id	name	description	location	createdAt	lastModified	partitionColumns	clusteringColumns	numFiles	sizeInBytes	properties	minReaderVersion	minWriterVersion	tableFeatures	statistics
+delta	9e919bca-6b7d-419e-b753-e47e10ca25fd	tabular.dataexpert.dim_product_sahil	null	s3://techcreator/dataexpert-databricks/__unitystorage/schemas/e54ae632-5fbd-4a2a-8b56-e9c9f3f8a77b/tables/1200bd97-e81f-43a0-b152-254d19ae05b9	2025-06-11T02:17:16.139Z	2025-06-11T02:39:11Z	List()	List(product_id)	1	1351	Map(delta.enableDeletionVectors -> true, delta.enableRowTracking -> true, delta.checkpointPolicy -> v2, delta.rowTracking.materializedRowCommitVersionColumnName -> _row-commit-version-col-6dca1658-8ece-4932-941f-3217d301da72, delta.rowTracking.materializedRowIdColumnName -> _row-id-col-c806a4ef-ecd7-4045-a156-404ccdcee4d6)	3	7	List(clustering, deletionVectors, domainMetadata, rowTracking, v2Checkpoint)	Map(numRowsDeletedByDeletionVectors -> 0, numDeletionVectors -
+
+%sql
+-- Show the full version history (snapshots) of the product dimension table
+describe history dim_product_sahil;
+
+version	timestamp	userId	userName	operation	operationParameters	job	notebook	clusterId	readVersion	isolationLevel	isBlindAppend	operationMetrics	userMetadata	engineInfo
+6	2025-06-11T02:39:11Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> ["product_id"], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true","delta.enableRowTracking":"true","delta.checkpointPolicy":"v2","delta.rowTracking.materializedRowCommitVersionColumnName":"_row-commit-version-col-6dca1658-8ece-4932-941f-3217d301da72","delta.rowTracking.materializedRowIdColumnName":"_row-id-col-c806a4ef-ecd7-4045-a156-404ccdcee4d6"}, statsOnLoad -> false, clusteringOnWriteStatus -> late-stage clustering triggered)	null	List(2474691833873211)	0120-034800-q4ixh8v8	5	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 10, numOutputBytes -> 1351)	null	Databricks-Runtime/15.4.x-scala2.12
+5	2025-06-11T02:19:12Z	5066550381388164	ksahilreddy@gmail.com	OPTIMIZE	Map(predicate -> [], auto -> false, clusterBy -> ["product_id"], zOrderBy -> [], batchId -> -1)	null	List(2474691833873211)	0120-034800-q4ixh8v8	4	SnapshotIsolation	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+4	2025-06-11T02:18:35Z	5066550381388164	ksahilreddy@gmail.com	CLUSTER BY	Map(oldClusteringColumns -> , newClusteringColumns -> product_id)	null	List(2474691833873211)	0120-034800-q4ixh8v8	3	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+3	2025-06-11T02:18:34Z	5066550381388164	ksahilreddy@gmail.com	ROW TRACKING BACKFILL	Map(batchId -> 0)	null	List(2474691833873211)	0120-034800-q4ixh8v8	2	SnapshotIsolation	false	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+2	2025-06-11T02:18:32Z	5066550381388164	ksahilreddy@gmail.com	UPGRADE PROTOCOL	Map(newProtocol -> {"minReaderVersion":3,"minWriterVersion":7,"readerFeatures":["deletionVectors"],"writerFeatures":["deletionVectors","domainMetadata","rowTracking"]})	null	List(2474691833873211)	0120-034800-q4ixh8v8	1	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+1	2025-06-11T02:17:31Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> [], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true"}, statsOnLoad -> false)	null	List(2474691833873211)	0120-034800-q4ixh8v8	0	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 10, numOutputBytes -> 1338)	null	Databricks-Runtime/15.4.x-scala2.12
+0	2025-06-11T02:17:17Z	5066550381388164	ksahilreddy@gmail.com	CREATE TABLE	Map(partitionBy -> [], clusterBy -> [], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true"}, statsOnLoad -> false)	null	List(2474691833873211)	0120-034800-q4ixh8v8	null	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+
+
+%sql
+-- Show detailed metadata and properties for the category dimension table
+describe detail dim_category_sahil;
+
+format	id	name	description	location	createdAt	lastModified	partitionColumns	clusteringColumns	numFiles	sizeInBytes	properties	minReaderVersion	minWriterVersion	tableFeatures	statistics
+delta	bcacdaf9-d34a-4001-9494-7bb5866efd29	tabular.dataexpert.dim_category_sahil	null	s3://techcreator/dataexpert-databricks/__unitystorage/schemas/e54ae632-5fbd-4a2a-8b56-e9c9f3f8a77b/tables/d5ffc507-60ec-48aa-8ce2-42ff7f86926d	2025-06-11T02:17:18.004Z	2025-06-11T02:39:35Z	List()	List(category_id)	1	953	Map(delta.enableDeletionVectors -> true, delta.enableRowTracking -> true, delta.checkpointPolicy -> v2, delta.rowTracking.materializedRowCommitVersionColumnName -> _row-commit-version-col-52d5a031-ac92-4f05-8f28-fb8ffaf3bf2d, delta.rowTracking.materializedRowIdColumnName -> _row-id-col-c4318c0b-7d84-41fd-8bd3-9d68dc6fb5f5)	3	7	List(clustering, deletionVectors, domainMetadata, rowTracking, v2Checkpoint)	Map(numRowsDeletedByDeletionVectors -> 0, numDeletionVectors -> 
+
+%sql
+
+-- Show the full version history (snapshots) of the category dimension table
+describe history dim_category_sahil;
+
+version	timestamp	userId	userName	operation	operationParameters	job	notebook	clusterId	readVersion	isolationLevel	isBlindAppend	operationMetrics	userMetadata	engineInfo
+6	2025-06-11T02:39:35Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> ["category_id"], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true","delta.enableRowTracking":"true","delta.checkpointPolicy":"v2","delta.rowTracking.materializedRowCommitVersionColumnName":"_row-commit-version-col-52d5a031-ac92-4f05-8f28-fb8ffaf3bf2d","delta.rowTracking.materializedRowIdColumnName":"_row-id-col-c4318c0b-7d84-41fd-8bd3-9d68dc6fb5f5"}, statsOnLoad -> false, clusteringOnWriteStatus -> late-stage clustering triggered)	null	List(2474691833873211)	0120-034800-q4ixh8v8	5	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 5, numOutputBytes -> 953)	null	Databricks-Runtime/15.4.x-scala2.12
+5	2025-06-11T02:19:16Z	5066550381388164	ksahilreddy@gmail.com	OPTIMIZE	Map(predicate -> [], auto -> false, clusterBy -> ["category_id"], zOrderBy -> [], batchId -> -1)	null	List(2474691833873211)	0120-034800-q4ixh8v8	4	SnapshotIsolation	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+4	2025-06-11T02:18:39Z	5066550381388164	ksahilreddy@gmail.com	CLUSTER BY	Map(oldClusteringColumns -> , newClusteringColumns -> category_id)	null	List(2474691833873211)	0120-034800-q4ixh8v8	3	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+3	2025-06-11T02:18:38Z	5066550381388164	ksahilreddy@gmail.com	ROW TRACKING BACKFILL	Map(batchId -> 0)	null	List(2474691833873211)	0120-034800-q4ixh8v8	2	SnapshotIsolation	false	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+2	2025-06-11T02:18:37Z	5066550381388164	ksahilreddy@gmail.com	UPGRADE PROTOCOL	Map(newProtocol -> {"minReaderVersion":3,"minWriterVersion":7,"readerFeatures":["deletionVectors"],"writerFeatures":["deletionVectors","domainMetadata","rowTracking"]})	null	List(2474691833873211)	0120-034800-q4ixh8v8	1	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+1	2025-06-11T02:17:33Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> [], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true"}, statsOnLoad -> false)	null	List(2474691833873211)	0120-034800-q4ixh8v8	0	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 5, numOutputBytes -> 959)	null	Databricks-Runtime/15.4.x-scala2.12
+0	2025-06-11T02:17:19Z	5066550381388164	ksahilreddy@gmail.com	CREATE TABLE	Map(partitionBy -> [], clusterBy -> [], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true"}, statsOnLoad -> false)	null	List(2474691833873211)	0120-034800-q4ixh8v8	null	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+
+%sql
+-- Show detailed metadata and properties for the date dimension table
+DESCRIBE DETAIL dim_date_sahil;
+
+format	id	name	description	location	createdAt	lastModified	partitionColumns	clusteringColumns	numFiles	sizeInBytes	properties	minReaderVersion	minWriterVersion	tableFeatures	statistics
+delta	cc75866b-d492-4cf2-b70f-b394a88fd1d3	tabular.dataexpert.dim_date_sahil	null	s3://techcreator/dataexpert-databricks/__unitystorage/schemas/e54ae632-5fbd-4a2a-8b56-e9c9f3f8a77b/tables/0bc4a95c-6c4e-4749-8525-d089891cc04d	2025-06-11T01:58:24.666Z	2025-06-11T01:58:45Z	List()	List()	1	1036	Map(delta.enableDeletionVectors -> true)	3	7	List(deletionVectors)	Map(numRowsDeletedByDeletionVectors -> 0, numDeletionVectors -> 0)
+
+%sql
+-- Show the full version history (snapshots) of the date dimension table
+describe history dim_date_sahil;
+
+version	timestamp	userId	userName	operation	operationParameters	job	notebook	clusterId	readVersion	isolationLevel	isBlindAppend	operationMetrics	userMetadata	engineInfo
+6	2025-06-11T02:39:40Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> ["date_id"], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true","delta.enableRowTracking":"true","delta.checkpointPolicy":"v2","delta.rowTracking.materializedRowCommitVersionColumnName":"_row-commit-version-col-9fd29466-76bc-42ca-8ea4-6766056ce2bf","delta.rowTracking.materializedRowIdColumnName":"_row-id-col-6d63ce59-9a5e-43cd-aa44-8266f17fb896"}, statsOnLoad -> false, clusteringOnWriteStatus -> late-stage clustering triggered)	null	List(2474691833873211)	0120-034800-q4ixh8v8	5	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 20, numOutputBytes -> 1035)	null	Databricks-Runtime/15.4.x-scala2.12
+5	2025-06-11T02:19:19Z	5066550381388164	ksahilreddy@gmail.com	OPTIMIZE	Map(predicate -> [], auto -> false, clusterBy -> ["date_id"], zOrderBy -> [], batchId -> -1)	null	List(2474691833873211)	0120-034800-q4ixh8v8	4	SnapshotIsolation	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+4	2025-06-11T02:18:43Z	5066550381388164	ksahilreddy@gmail.com	CLUSTER BY	Map(oldClusteringColumns -> , newClusteringColumns -> date_id)	null	List(2474691833873211)	0120-034800-q4ixh8v8	3	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+3	2025-06-11T02:18:42Z	5066550381388164	ksahilreddy@gmail.com	ROW TRACKING BACKFILL	Map(batchId -> 0)	null	List(2474691833873211)	0120-034800-q4ixh8v8	2	SnapshotIsolation	false	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+2	2025-06-11T02:18:40Z	5066550381388164	ksahilreddy@gmail.com	UPGRADE PROTOCOL	Map(newProtocol -> {"minReaderVersion":3,"minWriterVersion":7,"readerFeatures":["deletionVectors"],"writerFeatures":["deletionVectors","domainMetadata","rowTracking"]})	null	List(2474691833873211)	0120-034800-q4ixh8v8	1	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+1	2025-06-11T02:17:35Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> [], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true"}, statsOnLoad -> false)	null	List(2474691833873211)	0120-034800-q4ixh8v8	0	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 20, numOutputBytes -> 1036)	null	Databricks-Runtime/15.4.x-scala2.12
+0	2025-06-11T02:17:21Z	5066550381388164	ksahilreddy@gmail.com	CREATE TABLE	Map(partitionBy -> [], clusterBy -> [], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true"}, statsOnLoad -> false)	null	List(2474691833873211)	0120-034800-q4ixh8v8	null	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+
+%sql
+-- Show detailed metadata and properties for the fact sales table
+DESCRIBE DETAIL fact_sales_sahil;
+
+format	id	name	description	location	createdAt	lastModified	partitionColumns	clusteringColumns	numFiles	sizeInBytes	properties	minReaderVersion	minWriterVersion	tableFeatures	statistics
+delta	7474382b-a628-4586-b711-b66e63813b95	tabular.dataexpert.fact_sales_sahil	null	s3://techcreator/dataexpert-databricks/__unitystorage/schemas/e54ae632-5fbd-4a2a-8b56-e9c9f3f8a77b/tables/208247e6-1e0c-42a5-870b-f5caeb9f5aa9	2025-06-11T02:08:20.34Z	2025-06-11T02:40:11Z	List()	List(product_id, category_id, date_id, ts)	1	2736	Map(delta.enableDeletionVectors -> true, delta.enableRowTracking -> true, delta.checkpointPolicy -> v2, delta.rowTracking.materializedRowCommitVersionColumnName -> _row-commit-version-col-e8940f20-44bf-452e-803d-7ef9f00b916c, delta.rowTracking.materializedRowIdColumnName -> _row-id-col-2547445a-0af6-4395-b03a-15998f1ad9a0)	3	7	List(clustering, deletionVectors, domainMetadata, rowTracking, v2Checkpoint)	Map(numRowsDeletedByDeletionVectors -> 0, numDeletionVectors -> 0)
+
+%sql
+-- Show the full version history (snapshots) of the fact sales table
+DESCRIBE HISTORY fact_sales_sahil
+
+version	timestamp	userId	userName	operation	operationParameters	job	notebook	clusterId	readVersion	isolationLevel	isBlindAppend	operationMetrics	userMetadata	engineInfo
+16	2025-06-11T02:46:36Z	5066550381388164	ksahilreddy@gmail.com	OPTIMIZE	Map(predicate -> [], auto -> true, clusterBy -> [], zOrderBy -> [], batchId -> 0)	null	List(2474691833873211)	0120-034800-q4ixh8v8	14	SnapshotIsolation	false	Map(numRemovedFiles -> 3, numRemovedBytes -> 7413, p25FileSize -> 3631, numDeletionVectorsRemoved -> 3, conflictDetectionTimeMs -> 35, minFileSize -> 3631, numAddedFiles -> 1, maxFileSize -> 3631, p75FileSize -> 3631, p50FileSize -> 3631, numAddedBytes -> 3631)	null	Databricks-Runtime/15.4.x-scala2.12
+15	2025-06-11T02:46:35Z	5066550381388164	ksahilreddy@gmail.com	DELETE	Map(predicate -> ["(((product_id#17964 = 5) AND (category_id#17965 = 1)) AND (date_id#17966 = 5))"])	null	List(2474691833873211)	0120-034800-q4ixh8v8	14	WriteSerializable	false	Map(numRemovedFiles -> 0, numRemovedBytes -> 0, numCopiedRows -> 0, numDeletionVectorsAdded -> 1, numDeletionVectorsRemoved -> 0, numAddedChangeFiles -> 0, executionTimeMs -> 1135, numDeletionVectorsUpdated -> 0, numDeletedRows -> 1, scanTimeMs -> 665, numAddedFiles -> 0, numAddedBytes -> 0, rewriteTimeMs -> 470)	null	Databricks-Runtime/15.4.x-scala2.12
+14	2025-06-11T02:46:32Z	5066550381388164	ksahilreddy@gmail.com	UPDATE	Map(predicate -> ["(product_id#16353 = 2)"])	null	List(2474691833873211)	0120-034800-q4ixh8v8	13	WriteSerializable	false	Map(numRemovedFiles -> 0, numRemovedBytes -> 0, numCopiedRows -> 0, numDeletionVectorsAdded -> 3, numDeletionVectorsRemoved -> 0, numAddedChangeFiles -> 0, executionTimeMs -> 2081, numDeletionVectorsUpdated -> 0, scanTimeMs -> 983, numAddedFiles -> 1, numUpdatedRows -> 7, numAddedBytes -> 2958, rewriteTimeMs -> 1096)	null	Databricks-Runtime/15.4.x-scala2.12
+13	2025-06-11T02:46:29Z	5066550381388164	ksahilreddy@gmail.com	OPTIMIZE	Map(predicate -> [], auto -> true, clusterBy -> [], zOrderBy -> [], batchId -> 0)	null	List(2474691833873211)	0120-034800-q4ixh8v8	11	SnapshotIsolation	false	Map(numRemovedFiles -> 1, numRemovedBytes -> 1917, p25FileSize -> 2790, numDeletionVectorsRemoved -> 1, conflictDetectionTimeMs -> 143, minFileSize -> 2790, numAddedFiles -> 1, maxFileSize -> 2790, p75FileSize -> 2790, p50FileSize -> 2790, numAddedBytes -> 2790)	null	Databricks-Runtime/15.4.x-scala2.12
+12	2025-06-11T02:46:28Z	5066550381388164	ksahilreddy@gmail.com	WRITE	Map(partitionBy -> [], clusterBy -> ["product_id","category_id","date_id","ts"], statsOnLoad -> false, mode -> Append, clusteringOnWriteStatus -> late-stage clustering triggered)	null	List(2474691833873211)	0120-034800-q4ixh8v8	11	WriteSerializable	true	Map(numFiles -> 1, numOutputRows -> 2, numOutputBytes -> 1887)	null	Databricks-Runtime/15.4.x-scala2.12
+11	2025-06-11T02:46:24Z	5066550381388164	ksahilreddy@gmail.com	UPDATE	Map(predicate -> ["(((product_id#14076 = 1) AND (category_id#14077 = 1)) AND (date_id#14078 = 1))"])	null	List(2474691833873211)	0120-034800-q4ixh8v8	10	WriteSerializable	false	Map(numRemovedFiles -> 0, numRemovedBytes -> 0, numCopiedRows -> 0, numDeletionVectorsAdded -> 1, numDeletionVectorsRemoved -> 0, numAddedChangeFiles -> 0, executionTimeMs -> 4923, numDeletionVectorsUpdated -> 0, scanTimeMs -> 2028, numAddedFiles -> 1, numUpdatedRows -> 1, numAddedBytes -> 2706, rewriteTimeMs -> 2838)	null	Databricks-Runtime/15.4.x-scala2.12
+10	2025-06-11T02:46:18Z	5066550381388164	ksahilreddy@gmail.com	WRITE	Map(partitionBy -> [], clusterBy -> ["product_id","category_id","date_id","ts"], statsOnLoad -> false, mode -> Append, clusteringOnWriteStatus -> late-stage clustering triggered)	null	List(2474691833873211)	0120-034800-q4ixh8v8	9	WriteSerializable	true	Map(numFiles -> 1, numOutputRows -> 2, numOutputBytes -> 1887)	null	Databricks-Runtime/15.4.x-scala2.12
+9	2025-06-11T02:46:14Z	5066550381388164	ksahilreddy@gmail.com	WRITE	Map(partitionBy -> [], clusterBy -> ["product_id","category_id","date_id","ts"], statsOnLoad -> false, mode -> Append, clusteringOnWriteStatus -> late-stage clustering triggered)	null	List(2474691833873211)	0120-034800-q4ixh8v8	8	WriteSerializable	true	Map(numFiles -> 1, numOutputRows -> 3, numOutputBytes -> 1917)	null	Databricks-Runtime/15.4.x-scala2.12
+8	2025-06-11T02:45:18Z	5066550381388164	ksahilreddy@gmail.com	OPTIMIZE	Map(predicate -> [], auto -> false, clusterBy -> ["product_id","category_id","date_id","ts"], zOrderBy -> [], batchId -> -1)	null	List(2474691833873211)	0120-034800-q4ixh8v8	7	SnapshotIsolation	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+7	2025-06-11T02:44:02Z	5066550381388164	ksahilreddy@gmail.com	CLUSTER BY	Map(oldClusteringColumns -> product_id,category_id,date_id,ts, newClusteringColumns -> product_id,category_id,date_id,ts)	null	List(2474691833873211)	0120-034800-q4ixh8v8	6	SnapshotIsolation	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+6	2025-06-11T02:40:11Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> ["product_id","category_id","date_id","ts"], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true","delta.enableRowTracking":"true","delta.checkpointPolicy":"v2","delta.rowTracking.materializedRowCommitVersionColumnName":"_row-commit-version-col-e8940f20-44bf-452e-803d-7ef9f00b916c","delta.rowTracking.materializedRowIdColumnName":"_row-id-col-2547445a-0af6-4395-b03a-15998f1ad9a0"}, statsOnLoad -> false, clusteringOnWriteStatus -> late-stage clustering triggered)	null	List(2474691833873211)	0120-034800-q4ixh8v8	5	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 50, numOutputBytes -> 2736)	null	Databricks-Runtime/15.4.x-scala2.12
+5	2025-06-11T02:19:22Z	5066550381388164	ksahilreddy@gmail.com	OPTIMIZE	Map(predicate -> [], auto -> false, clusterBy -> ["product_id","category_id","date_id","ts"], zOrderBy -> [], batchId -> -1)	null	List(2474691833873211)	0120-034800-q4ixh8v8	4	SnapshotIsolation	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+4	2025-06-11T02:18:47Z	5066550381388164	ksahilreddy@gmail.com	CLUSTER BY	Map(oldClusteringColumns -> , newClusteringColumns -> product_id,category_id,date_id,ts)	null	List(2474691833873211)	0120-034800-q4ixh8v8	3	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+3	2025-06-11T02:18:46Z	5066550381388164	ksahilreddy@gmail.com	ROW TRACKING BACKFILL	Map(batchId -> 0)	null	List(2474691833873211)	0120-034800-q4ixh8v8	2	SnapshotIsolation	false	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+2	2025-06-11T02:18:44Z	5066550381388164	ksahilreddy@gmail.com	UPGRADE PROTOCOL	Map(newProtocol -> {"minReaderVersion":3,"minWriterVersion":7,"readerFeatures":["deletionVectors"],"writerFeatures":["deletionVectors","domainMetadata","rowTracking"]})	null	List(2474691833873211)	0120-034800-q4ixh8v8	1	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+1	2025-06-11T02:17:53Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> [], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true"}, statsOnLoad -> false)	null	List(2474691833873211)	0120-034800-q4ixh8v8	0	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 50, numOutputBytes -> 2752)	null	Databricks-Runtime/15.4.x-scala2.12
+0	2025-06-11T02:08:22Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> [], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true"}, statsOnLoad -> false)	null	List(2474691833873211)	0120-034800-q4ixh8v8	null	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 50, numOutputBytes -> 2724)	null	Databricks-Runtime/15.4.x-scala2.12
+
+%sql
+-- Apply Liquid Clustering to all tables by their surrogate/foreign keys 
+
+ALTER TABLE dim_product_sahil CLUSTER BY (product_id);
+ALTER TABLE dim_category_sahil CLUSTER BY (category_id);
+ALTER TABLE dim_date_sahil CLUSTER BY (date_id);
+ALTER TABLE fact_sales_sahil CLUSTER BY (product_id, category_id, date_id, ts);
+
+%md 
+
+Optimization in Delta Lake compacts many small files into fewer large files, reducing file fragmentation. This minimizes the overhead of opening and scanning multiple files during queries. As a result, query engines can read data more efficiently, leading to faster query performance and lower resource consumption. Regular optimization ensures that data is organized for optimal access patterns, especially after frequent inserts, updates, or deletes.
+
+%sql
+-- Run OPTIMIZE to compact files and improve query performance
+
+OPTIMIZE dim_product_sahil;
+OPTIMIZE dim_category_sahil;
+OPTIMIZE dim_date_sahil;
+OPTIMIZE fact_sales_sahil;
+
+
+
+%sql
+USE tabular.dataexpert;
+-- Insert batch 1: Initial synthetic fact data
+INSERT INTO fact_sales_sahil (product_id, category_id, date_id, quantity, sales_amount, ts) VALUES
+  (1, 1, 1, 10, 100.0, '2025-06-01 10:00:00'),
+  (2, 2, 2, 5, 60.0, '2025-06-01 11:00:00'),
+  (3, 3, 3, 8, 88.0, '2025-06-01 12:00:00');
+
+-- Insert batch 2: More synthetic fact data
+INSERT INTO fact_sales_sahil (product_id, category_id, date_id, quantity, sales_amount, ts) VALUES
+  (4, 2, 4, 12, 144.0, '2025-06-02 09:00:00'),
+  (5, 1, 5, 7, 77.0, '2025-06-02 10:30:00');
+
+-- Update: Change quantity and sales_amount for one row
+UPDATE fact_sales_sahil
+SET quantity = 15, sales_amount = 150.0
+WHERE product_id = 1 AND category_id = 1 AND date_id = 1;
+
+-- Insert batch 3: Even more synthetic fact data
+INSERT INTO fact_sales_sahil (product_id, category_id, date_id, quantity, sales_amount, ts) VALUES
+  (2, 2, 6, 9, 99.0, '2025-06-03 08:00:00'),
+  (3, 3, 7, 6, 66.0, '2025-06-03 09:30:00');
+
+-- Update: Simulate a correction
+UPDATE fact_sales_sahil
+SET sales_amount = sales_amount + 10
+WHERE product_id = 2;
+
+-- Delete a row to create another snapshot
+DELETE FROM fact_sales_sahil
+WHERE product_id = 5 AND category_id = 1 AND date_id = 5;
+
+-- Check current state
+SELECT * FROM fact_sales_sahil;
+
+product_id	category_id	date_id	quantity	sales_amount	ts
+7	1	9	6	394.37	2025-06-07T02:40:05Z
+4	2	3	12	120.38	2025-06-05T02:40:05Z
+1	1	18	3	148.26	2025-06-05T02:40:05Z
+9	1	17	2	126.76	2025-05-26T02:40:05Z
+1	2	10	8	258.38	2025-05-25T02:40:05Z
+4	1	15	18	435.09	2025-05-23T02:40:05Z
+5	2	18	4	130.03	2025-06-02T02:40:05Z
+9	3	19	17	612.91	2025-06-01T02:40:05Z
+9	5	16	12	229.22	2025-06-03T02:40:05Z
+5	1	7	10	734.68	2025-06-08T02:40:05Z
+3	2	3	3	113.77	2025-05-22T02:40:05Z
+3	1	6	11	555.34	2025-06-03T02:40:05Z
+6	2	18	18	1226.49	2025-06-09T02:40:05Z
+4	2	8	19	880.79	2025-06-08T02:40:05Z
+5	1	18	11	292.4	2025-05-29T02:40:05Z
+4	1	3	6	419.33	2025-05-25T02:40:05Z
+7	1	14	14	835.68	2025-05-29T02:40:05Z
+7	1	9	2	135.54	2025-05-30T02:40:05Z
+4	3	10	4	54.73	2025-05-23T02:40:05Z
+8	5	8	17	1280.15	2025-05-23T02:40:05Z
+7	3	16	10	984.34	2025-06-05T02:40:05Z
+8	1	10	17	885.1	2025-06-07T02:40:05Z
+7	2	3	6	429.49	2025-06-03T02:40:05Z
+3	1	18	12	446.5	2025-05-30T02:40:05Z
+5	3	14	9	542.52	2025-06-01T02:40:05Z
+9	4	14	20	1239.98	2025-05-22T02:40:05Z
+6	5	12	2	187.72	2025-06-08T02:40:05Z
+6	5	3	16	391.7	2025-06-11T02:40:05Z
+8	2	6	17	400.11	2025-06-06T02:40:05Z
+5	2	12	12	431.63	2025-06-03T02:40:05Z
+5	2	7	17	981.38	2025-06-05T02:40:05Z
+8	2	9	15	725.63	2025-06-10T02:40:05Z
+6	5	5	19	959.63	2025-06-03T02:40:05Z
+3	1	5	12	314.29	2025-06-08T02:40:05Z
+3	1	5	4	135.51	2025-06-11T02:40:05Z
+10	5	15	6	490.19	2025-05-22T02:40:05Z
+7	3	12	6	113.77	2025-05-25T02:40:05Z
+4	4	10	19	1026.19	2025-06-09T02:40:05Z
+3	1	16	4	342.26	2025-05-29T02:40:05Z
+7	1	15	20	1674.67	2025-06-04T02:40:05Z
+10	5	4	5	410.11	2025-06-04T02:40:05Z
+10	1	11	20	383.02	2025-06-06T02:40:05Z
+5	5	7	1	81.65	2025-05-24T02:40:05Z
+10	4	15	20	296.48	2025-06-11T02:40:05Z
+9	4	1	1	93.32	2025-06-05T02:40:05Z
+3	3	3	8	88.0	2025-06-01T12:00:00Z
+3	3	7	6	66.0	2025-06-03T09:30:00Z
+2	4	14	8	126.62	2025-06-01T02:40:05Z
+2	1	5	13	702.58	2025-06-03T02:40:05Z
+2	5	15	8	775.02	2025-06-04T02:40:05Z
+2	3	15	10	980.89	2025-06-04T02:40:05Z
+2	5	6	9	749.56	2025-05-28T02:40:05Z
+2	2	2	5	70.0	2025-06-01T11:00:00Z
+2	2	6	9	109.0	2025-06-03T08:00:00Z
+1	1	1	15	150.0	2025-06-01T10:00:00Z
+4	2	4	12	144.0	2025-06-02T09:00:00Z
+
+%sql
+-- show full version history (snapshots) of the fact sales table
+DESCRIBE HISTORY fact_sales_sahil;
+
+version	timestamp	userId	userName	operation	operationParameters	job	notebook	clusterId	readVersion	isolationLevel	isBlindAppend	operationMetrics	userMetadata	engineInfo
+16	2025-06-11T02:46:36Z	5066550381388164	ksahilreddy@gmail.com	OPTIMIZE	Map(predicate -> [], auto -> true, clusterBy -> [], zOrderBy -> [], batchId -> 0)	null	List(2474691833873211)	0120-034800-q4ixh8v8	14	SnapshotIsolation	false	Map(numRemovedFiles -> 3, numRemovedBytes -> 7413, p25FileSize -> 3631, numDeletionVectorsRemoved -> 3, conflictDetectionTimeMs -> 35, minFileSize -> 3631, numAddedFiles -> 1, maxFileSize -> 3631, p75FileSize -> 3631, p50FileSize -> 3631, numAddedBytes -> 3631)	null	Databricks-Runtime/15.4.x-scala2.12
+15	2025-06-11T02:46:35Z	5066550381388164	ksahilreddy@gmail.com	DELETE	Map(predicate -> ["(((product_id#17964 = 5) AND (category_id#17965 = 1)) AND (date_id#17966 = 5))"])	null	List(2474691833873211)	0120-034800-q4ixh8v8	14	WriteSerializable	false	Map(numRemovedFiles -> 0, numRemovedBytes -> 0, numCopiedRows -> 0, numDeletionVectorsAdded -> 1, numDeletionVectorsRemoved -> 0, numAddedChangeFiles -> 0, executionTimeMs -> 1135, numDeletionVectorsUpdated -> 0, numDeletedRows -> 1, scanTimeMs -> 665, numAddedFiles -> 0, numAddedBytes -> 0, rewriteTimeMs -> 470)	null	Databricks-Runtime/15.4.x-scala2.12
+14	2025-06-11T02:46:32Z	5066550381388164	ksahilreddy@gmail.com	UPDATE	Map(predicate -> ["(product_id#16353 = 2)"])	null	List(2474691833873211)	0120-034800-q4ixh8v8	13	WriteSerializable	false	Map(numRemovedFiles -> 0, numRemovedBytes -> 0, numCopiedRows -> 0, numDeletionVectorsAdded -> 3, numDeletionVectorsRemoved -> 0, numAddedChangeFiles -> 0, executionTimeMs -> 2081, numDeletionVectorsUpdated -> 0, scanTimeMs -> 983, numAddedFiles -> 1, numUpdatedRows -> 7, numAddedBytes -> 2958, rewriteTimeMs -> 1096)	null	Databricks-Runtime/15.4.x-scala2.12
+13	2025-06-11T02:46:29Z	5066550381388164	ksahilreddy@gmail.com	OPTIMIZE	Map(predicate -> [], auto -> true, clusterBy -> [], zOrderBy -> [], batchId -> 0)	null	List(2474691833873211)	0120-034800-q4ixh8v8	11	SnapshotIsolation	false	Map(numRemovedFiles -> 1, numRemovedBytes -> 1917, p25FileSize -> 2790, numDeletionVectorsRemoved -> 1, conflictDetectionTimeMs -> 143, minFileSize -> 2790, numAddedFiles -> 1, maxFileSize -> 2790, p75FileSize -> 2790, p50FileSize -> 2790, numAddedBytes -> 2790)	null	Databricks-Runtime/15.4.x-scala2.12
+12	2025-06-11T02:46:28Z	5066550381388164	ksahilreddy@gmail.com	WRITE	Map(partitionBy -> [], clusterBy -> ["product_id","category_id","date_id","ts"], statsOnLoad -> false, mode -> Append, clusteringOnWriteStatus -> late-stage clustering triggered)	null	List(2474691833873211)	0120-034800-q4ixh8v8	11	WriteSerializable	true	Map(numFiles -> 1, numOutputRows -> 2, numOutputBytes -> 1887)	null	Databricks-Runtime/15.4.x-scala2.12
+11	2025-06-11T02:46:24Z	5066550381388164	ksahilreddy@gmail.com	UPDATE	Map(predicate -> ["(((product_id#14076 = 1) AND (category_id#14077 = 1)) AND (date_id#14078 = 1))"])	null	List(2474691833873211)	0120-034800-q4ixh8v8	10	WriteSerializable	false	Map(numRemovedFiles -> 0, numRemovedBytes -> 0, numCopiedRows -> 0, numDeletionVectorsAdded -> 1, numDeletionVectorsRemoved -> 0, numAddedChangeFiles -> 0, executionTimeMs -> 4923, numDeletionVectorsUpdated -> 0, scanTimeMs -> 2028, numAddedFiles -> 1, numUpdatedRows -> 1, numAddedBytes -> 2706, rewriteTimeMs -> 2838)	null	Databricks-Runtime/15.4.x-scala2.12
+10	2025-06-11T02:46:18Z	5066550381388164	ksahilreddy@gmail.com	WRITE	Map(partitionBy -> [], clusterBy -> ["product_id","category_id","date_id","ts"], statsOnLoad -> false, mode -> Append, clusteringOnWriteStatus -> late-stage clustering triggered)	null	List(2474691833873211)	0120-034800-q4ixh8v8	9	WriteSerializable	true	Map(numFiles -> 1, numOutputRows -> 2, numOutputBytes -> 1887)	null	Databricks-Runtime/15.4.x-scala2.12
+9	2025-06-11T02:46:14Z	5066550381388164	ksahilreddy@gmail.com	WRITE	Map(partitionBy -> [], clusterBy -> ["product_id","category_id","date_id","ts"], statsOnLoad -> false, mode -> Append, clusteringOnWriteStatus -> late-stage clustering triggered)	null	List(2474691833873211)	0120-034800-q4ixh8v8	8	WriteSerializable	true	Map(numFiles -> 1, numOutputRows -> 3, numOutputBytes -> 1917)	null	Databricks-Runtime/15.4.x-scala2.12
+8	2025-06-11T02:45:18Z	5066550381388164	ksahilreddy@gmail.com	OPTIMIZE	Map(predicate -> [], auto -> false, clusterBy -> ["product_id","category_id","date_id","ts"], zOrderBy -> [], batchId -> -1)	null	List(2474691833873211)	0120-034800-q4ixh8v8	7	SnapshotIsolation	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+7	2025-06-11T02:44:02Z	5066550381388164	ksahilreddy@gmail.com	CLUSTER BY	Map(oldClusteringColumns -> product_id,category_id,date_id,ts, newClusteringColumns -> product_id,category_id,date_id,ts)	null	List(2474691833873211)	0120-034800-q4ixh8v8	6	SnapshotIsolation	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+6	2025-06-11T02:40:11Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> ["product_id","category_id","date_id","ts"], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true","delta.enableRowTracking":"true","delta.checkpointPolicy":"v2","delta.rowTracking.materializedRowCommitVersionColumnName":"_row-commit-version-col-e8940f20-44bf-452e-803d-7ef9f00b916c","delta.rowTracking.materializedRowIdColumnName":"_row-id-col-2547445a-0af6-4395-b03a-15998f1ad9a0"}, statsOnLoad -> false, clusteringOnWriteStatus -> late-stage clustering triggered)	null	List(2474691833873211)	0120-034800-q4ixh8v8	5	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 50, numOutputBytes -> 2736)	null	Databricks-Runtime/15.4.x-scala2.12
+5	2025-06-11T02:19:22Z	5066550381388164	ksahilreddy@gmail.com	OPTIMIZE	Map(predicate -> [], auto -> false, clusterBy -> ["product_id","category_id","date_id","ts"], zOrderBy -> [], batchId -> -1)	null	List(2474691833873211)	0120-034800-q4ixh8v8	4	SnapshotIsolation	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+4	2025-06-11T02:18:47Z	5066550381388164	ksahilreddy@gmail.com	CLUSTER BY	Map(oldClusteringColumns -> , newClusteringColumns -> product_id,category_id,date_id,ts)	null	List(2474691833873211)	0120-034800-q4ixh8v8	3	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+3	2025-06-11T02:18:46Z	5066550381388164	ksahilreddy@gmail.com	ROW TRACKING BACKFILL	Map(batchId -> 0)	null	List(2474691833873211)	0120-034800-q4ixh8v8	2	SnapshotIsolation	false	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+2	2025-06-11T02:18:44Z	5066550381388164	ksahilreddy@gmail.com	UPGRADE PROTOCOL	Map(newProtocol -> {"minReaderVersion":3,"minWriterVersion":7,"readerFeatures":["deletionVectors"],"writerFeatures":["deletionVectors","domainMetadata","rowTracking"]})	null	List(2474691833873211)	0120-034800-q4ixh8v8	1	WriteSerializable	true	Map()	null	Databricks-Runtime/15.4.x-scala2.12
+1	2025-06-11T02:17:53Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> [], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true"}, statsOnLoad -> false)	null	List(2474691833873211)	0120-034800-q4ixh8v8	0	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 50, numOutputBytes -> 2752)	null	Databricks-Runtime/15.4.x-scala2.12
+0	2025-06-11T02:08:22Z	5066550381388164	ksahilreddy@gmail.com	CREATE OR REPLACE TABLE AS SELECT	Map(partitionBy -> [], clusterBy -> [], description -> null, isManaged -> true, properties -> {"delta.enableDeletionVectors":"true"}, statsOnLoad -> false)	null	List(2474691833873211)	0120-034800-q4ixh8v8	null	WriteSerializable	false	Map(numFiles -> 1, numOutputRows -> 50, numOutputBytes -> 2724)	null	Databricks-Runtime/15.4.x-scala2.12
+
+%sql
+-- Query the fact_sales_sahil table at a specific version to see the state of the table at that point in time
+SELECT * FROM fact_sales_sahil VERSION AS OF 0;
+
+product_id	category_id	date_id	quantity	sales_amount	ts
+4	3	14	6	315.98	2025-06-06T02:08:19Z
+4	3	19	16	912.53	2025-05-23T02:08:19Z
+6	1	10	15	1405.18	2025-06-01T02:08:19Z
+4	1	11	6	97.2	2025-06-04T02:08:19Z
+4	4	10	20	647.84	2025-06-02T02:08:19Z
+2	3	9	18	1065.17	2025-05-31T02:08:19Z
+8	3	1	5	250.47	2025-06-03T02:08:19Z
+10	5	1	15	894.96	2025-05-25T02:08:19Z
+10	2	9	3	220.11	2025-06-09T02:08:19Z
+10	1	18	19	1880.69	2025-05-31T02:08:19Z
+9	3	19	13	757.78	2025-06-01T02:08:19Z
+4	3	18	12	653.49	2025-05-26T02:08:19Z
+1	5	15	2	41.52	2025-06-04T02:08:19Z
+6	4	9	17	709.5	2025-06-11T02:08:19Z
+9	1	9	6	207.96	2025-05-25T02:08:19Z
+3	5	10	19	257.19	2025-06-08T02:08:19Z
+2	5	12	20	1110.16	2025-06-07T02:08:19Z
+7	3	5	6	244.53	2025-06-01T02:08:19Z
+3	4	1	4	360.52	2025-05-22T02:08:19Z
+7	3	11	4	58.88	2025-06-09T02:08:19Z
+3	3	15	7	448.44	2025-06-11T02:08:19Z
+7	3	10	17	1224.75	2025-05-26T02:08:19Z
+6	4	14	2	135.31	2025-05-27T02:08:19Z
+1	5	5	20	887.64	2025-05-23T02:08:19Z
+5	4	16	15	799.03	2025-06-10T02:08:19Z
+1	1	18	5	472.03	2025-06-08T02:08:19Z
+8	4	17	6	492.56	2025-05-24T02:08:19Z
+8	2	6	11	741.18	2025-06-11T02:08:19Z
+7	2	16	4	166.67	2025-05-29T02:08:19Z
+4	5	15	13	213.44	2025-05-27T02:08:19Z
+6	2	8	15	753.79	2025-06-09T02:08:19Z
+8	2	8	15	1065.74	2025-06-06T02:08:19Z
+9	5	3	11	155.25	2025-06-11T02:08:19Z
+10	4	17	11	671.49	2025-06-01T02:08:19Z
+3	1	3	9	289.17	2025-05-25T02:08:19Z
+9	3	19	7	444.58	2025-05-23T02:08:19Z
+10	1	10	17	1127.04	2025-06-09T02:08:19Z
+10	3	17	20	945.83	2025-05-29T02:08:19Z
+8	5	20	4	190.76	2025-05-22T02:08:19Z
+10	2	6	18	567.64	2025-05-23T02:08:19Z
+2	3	2	4	346.41	2025-06-02T02:08:19Z
+7	3	20	19	906.16	2025-05-26T02:08:19Z
+8	5	6	14	1077.68	2025-06-09T02:08:19Z
+5	2	16	6	429.0	2025-06-02T02:08:19Z
+4	4	3	3	136.47	2025-06-03T02:08:19Z
+9	4	1	2	50.4	2025-05-27T02:08:19Z
+6	2	20	3	58.03	2025-06-01T02:08:19Z
+9	3	17	6	585.98	2025-06-10T02:08:19Z
+5	2	9	12	193.36	2025-05-27T02:08:19Z
+2	4	11	3	130.33	2025-05-27T02:08:19Z
+
+%sql
+
+-- Perform some operations on the Delta table
+INSERT INTO fact_sales_sahil (product_id, category_id, date_id, quantity, sales_amount, ts) VALUES
+  (6, 3, 8, 10, 100.0, '2025-06-04 10:00:00');
+
+UPDATE fact_sales_sahil
+SET quantity = 20
+WHERE product_id = 6;
+
+DELETE FROM fact_sales_sahil
+WHERE product_id = 6;
+
+-- Check the history of the Delta table
+DESCRIBE HISTORY fact_sales_sahil;
+
+SELECT * FROM fact_sales_sahil VERSION AS OF 1;
+
+sale_id	product_id	category_id	date_id	quantity	sales_amount	ts
+4	10	4	2	10	811.94	2025-06-03T23:22:46Z
+5	6	1	4	15	210.39	2025-05-21T23:22:46Z
+6	10	4	1	4	314.11	2025-05-31T23:22:46Z
+10	2	1	10	15	1466.68	2025-05-26T23:22:46Z
+11	7	5	20	1	72.59	2025-06-01T23:22:46Z
+12	6	2	13	1	40.48	2025-05-25T23:22:46Z
+16	1	1	17	15	675.65	2025-06-07T23:22:46Z
+17	5	4	14	4	334.88	2025-05-28T23:22:46Z
+18	1	4	1	13	475.7	2025-06-01T23:22:46Z
+22	2	3	9	12	786.49	2025-05-27T23:22:46Z
+23	6	4	10	9	682.53	2025-05-22T23:22:46Z
+24	7	5	15	20	1909.59	2025-05-27T23:22:46Z
+25	10	1	13	13	226.58	2025-05-30T23:22:46Z
+29	5	3	19	14	345.44	2025-05-24T23:22:46Z
+30	10	1	3	12	723.9	2025-06-09T23:22:46Z
+31	10	2	8	20	1536.44	2025-06-07T23:22:46Z
+35	7	4	9	8	457.28	2025-05-28T23:22:46Z
+36	4	5	18	11	197.81	2025-05-27T23:22:46Z
+37	4	2	8	20	602.39	2025-06-09T23:22:46Z
+41	2	3	5	13	957.79	2025-06-03T23:22:46Z
+42	7	1	19	11	483.01	2025-06-08T23:22:46Z
+43	4	2	1	10	196.66	2025-06-09T23:22:46Z
+47	5	3	1	6	166.48	2025-06-10T23:22:46Z
+48	2	2	20	20	210.34	2025-05-22T23:22:46Z
+49	10	1	14	20	1569.96	2025-05-28T23:22:46Z
+50	10	1	11	13	1053.7	2025-05-26T23:22:46Z
+1	2	4	13	18	1018.47	2025-05-31T23:22:46Z
+2	7	2	15	1	54.54	2025-06-10T23:22:46Z
+3	1	2	8	5	227.08	2025-06-04T23:22:46Z
+7	8	1	7	15	407.44	2025-06-05T23:22:46Z
+8	3	4	2	7	187.04	2025-06-08T23:22:46Z
+9	5	2	20	14	929.3	2025-06-10T23:22:46Z
+13	1	4	4	11	1051.24	2025-06-05T23:22:46Z
+14	5	2	12	18	1407.03	2025-06-09T23:22:46Z
+15	2	4	20	4	78.34	2025-05-21T23:22:46Z
+19	8	1	9	19	1226.18	2025-06-07T23:22:46Z
+20	2	5	20	13	652.57	2025-05-27T23:22:46Z
+21	6	4	6	10	195.55	2025-05-25T23:22:46Z
+26	10	3	16	19	380.29	2025-06-04T23:22:46Z
+27	7	1	19	20	1963.99	2025-06-02T23:22:46Z
+28	5	1	14	18	1486.66	2025-05-24T23:22:46Z
+32	5	3	5	2	85.58	2025-05-30T23:22:46Z
+33	2	4	15	8	693.81	2025-05-30T23:22:46Z
+34	7	2	5	7	438.8	2025-05-22T23:22:46Z
+38	4	5	3	18	256.88	2025-05-21T23:22:46Z
+39	9	1	5	3	86.65	2025-05-23T23:22:46Z
+40	1	3	17	14	850.02	2025-06-04T23:22:46Z
+44	8	1	12	9	393.5	2025-05-22T23:22:46Z
+45	3	1	1	17	684.05	2025-06-07T23:22:46Z
+46	4	3	14	10	594.96	2025-05-29T23:22:46Z
+
+
+
+%sql
+select count(*) from fact_sales_sahil
+
+count(1)
+56
+
+%sql
+-- Delete all rows from the fact table (simulate accidental deletion)
+DELETE FROM fact_sales_sahil WHERE 1=1;
+
+-- Check table is empty
+SELECT COUNT(*) FROM fact_sales_sahil;
+
+-- Restore
+RESTORE TABLE fact_sales_sahil TO VERSION AS OF 1;
+
+-- Check data is restored
+SELECT COUNT(*) FROM fact_sales_sahil;
+
+count(1)
+50
+
